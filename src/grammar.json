@@ -26,27 +26,48 @@
       ]
     },
     "definition_type": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "workspace"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "workspace"
+            },
+            {
+              "type": "STRING",
+              "value": "group"
+            },
+            {
+              "type": "STRING",
+              "value": "con"
+            },
+            {
+              "type": "STRING",
+              "value": "exe"
+            },
+            {
+              "type": "STRING",
+              "value": "lib"
+            },
+            {
+              "type": "STRING",
+              "value": "dll"
+            }
+          ]
         },
         {
-          "type": "STRING",
-          "value": "con"
-        },
-        {
-          "type": "STRING",
-          "value": "exe"
-        },
-        {
-          "type": "STRING",
-          "value": "lib"
-        },
-        {
-          "type": "STRING",
-          "value": "dll"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_conditional"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -67,6 +88,32 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "_conditional": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "SYMBOL",
+          "name": "condition"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
+    "condition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[A-Za-z_]+"
         }
       ]
     },
@@ -123,10 +170,6 @@
       "value": "[a-z\\/]+\\.[a-z]+"
     },
     "target": {
-      "type": "PATTERN",
-      "value": "[a-z]+"
-    },
-    "identifier": {
       "type": "PATTERN",
       "value": "[a-z]+"
     },

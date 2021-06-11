@@ -45,3 +45,21 @@ con foo
     (block
       (use_statement
         (target)))))
+
+
+
+============================================
+Conditional definition
+============================================
+
+con(ENABLE_FOO) foo
+{
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type (condition))
+    (target)
+    (block)))

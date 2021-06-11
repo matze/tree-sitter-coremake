@@ -14,19 +14,32 @@ module.exports = grammar({
       $.block,
     ),
 
-    definition_type: $ => choice(
-      'workspace',
-      'group',
-      'con',
-      'exe',
-      'lib',
-      'dll',
+    definition_type: $ => seq(
+      choice(
+        'workspace',
+        'group',
+        'con',
+        'exe',
+        'lib',
+        'dll',
+      ),
+      optional($._conditional),
     ),
 
     block: $ => seq(
       '{',
       repeat($._statement),
       '}',
+    ),
+
+    _conditional: $ => seq(
+      '(',
+      $.condition,
+      ')',
+    ),
+
+    condition: $ => seq(
+      /[A-Za-z_]+/,
     ),
 
     _statement: $ => choice(
@@ -50,8 +63,6 @@ module.exports = grammar({
     file_path: $ => /[a-z\/]+\.[a-z]+/,
 
     target: $ => /[a-z]+/,
-
-    identifier: $ => /[a-z]+/,
 
     comment: $ => token(seq(
       '//', /.*/
