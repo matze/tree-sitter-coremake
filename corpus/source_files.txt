@@ -11,6 +11,34 @@ Comments
 
 
 ============================================
+Variables
+============================================
+
+foo bar.1.2.3
+
+----
+
+(source_file
+  (variable
+    (name)
+    (value)))
+
+
+
+============================================
+Include
+============================================
+
+#include "*/*.proj"
+
+----
+
+(source_file
+  (include
+    (string)))
+
+
+============================================
 Con
 ============================================
 
@@ -45,6 +73,28 @@ con foo
     (block
       (use_statement
         (target)))))
+
+
+
+============================================
+Variable in block
+============================================
+
+workspace foo
+{
+  compiler_match foo_bar_baz
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type)
+    (target)
+    (block
+      (variable
+        (name)
+        (value)))))
 
 
 

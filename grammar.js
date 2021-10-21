@@ -5,7 +5,21 @@ module.exports = grammar({
 
   rules: {
     source_file: $ => repeat(
-      $.definition
+      choice(
+        $.variable,
+        $.include,
+        $.definition,
+      ),
+    ),
+
+    variable: $ => seq(
+      $.name,
+      $.value,
+    ),
+
+    include: $ => seq(
+      '#include',
+      $.string,
     ),
 
     definition: $ => seq(
@@ -28,7 +42,12 @@ module.exports = grammar({
 
     block: $ => seq(
       '{',
-      repeat($._statement),
+      repeat(
+        choice(
+          $.variable,
+          $._statement,
+        ),
+      ),
       '}',
     ),
 
@@ -59,6 +78,16 @@ module.exports = grammar({
       ),
       $.file_path,
     ),
+
+    string: $ => seq(
+      '"',
+      /[^\\"\n"]+/,
+      '"',
+    ),
+
+    name: $ => /[A-Za-z_]+/,
+
+    value: $ => /[A-Za-z_0-9\.]+/,
 
     file_path: $ => /[a-z\/]+\.[a-z]+/,
 
