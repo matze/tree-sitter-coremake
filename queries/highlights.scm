@@ -1,4 +1,5 @@
 (definition_type) @type
+(string) @string
 (identifier) @string
 (file_path) @string
 (comment) @comment
@@ -29,3 +30,5 @@
   "{"
   "}"
 ] @punctuation.bracket
+
+"#include" @include
