@@ -1,6 +1,6 @@
 (definition_type) @type
 (string) @string
-(identifier) @string
+(identifier) @variable
 (file_path) @string
 (comment) @comment
 (name) @attribute
@@ -14,6 +14,9 @@
 [
   "if"
   "endif"
+] @conditional
+
+[
   "workspace"
   "con"
   "exe"
@@ -22,13 +25,11 @@
 ] @keyword
 
 [
+  "!"
   "&&"
   "||"
 ] @operator
 
-[
-  "{"
-  "}"
-] @punctuation.bracket
+["{" "}" "(" ")"] @punctuation.bracket
 
 "#include" @include
