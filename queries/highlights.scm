@@ -1,5 +1,5 @@
 (definition_type) @type
-(target) @number
+(identifier) @number
 (file_path) @string
 (comment) @comment
 

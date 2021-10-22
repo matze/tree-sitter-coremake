@@ -56,7 +56,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "target"
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
@@ -148,7 +148,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "condition"
+          "name": "_expression"
         },
         {
           "type": "STRING",
@@ -156,12 +156,84 @@
         }
       ]
     },
-    "condition": {
-      "type": "SEQ",
+    "_expression": {
+      "type": "CHOICE",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[A-Za-z_]+"
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "binary_expression"
+        }
+      ]
+    },
+    "unary_expression": {
+      "type": "PREC",
+      "value": 3,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "!"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        ]
+      }
+    },
+    "binary_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PREC_LEFT",
+          "value": 2,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              },
+              {
+                "type": "STRING",
+                "value": "&&"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_LEFT",
+          "value": 1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              },
+              {
+                "type": "STRING",
+                "value": "||"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
+            ]
+          }
         }
       ]
     },
@@ -175,6 +247,10 @@
         {
           "type": "SYMBOL",
           "name": "file_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "if_statement"
         }
       ]
     },
@@ -186,8 +262,20 @@
           "value": "use"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_conditional"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SYMBOL",
-          "name": "target"
+          "name": "identifier"
         }
       ]
     },
@@ -213,6 +301,30 @@
         }
       ]
     },
+    "if_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "if"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "endif"
+        }
+      ]
+    },
     "string": {
       "type": "SEQ",
       "members": [
@@ -230,6 +342,15 @@
         }
       ]
     },
+    "identifier": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[A-Za-z_\\-0-9]+"
+        }
+      ]
+    },
     "name": {
       "type": "PATTERN",
       "value": "[A-Za-z_]+"
@@ -241,10 +362,6 @@
     "file_path": {
       "type": "PATTERN",
       "value": "[a-z\\/]+\\.[a-z]+"
-    },
-    "target": {
-      "type": "PATTERN",
-      "value": "[a-z]+"
     },
     "comment": {
       "type": "TOKEN",

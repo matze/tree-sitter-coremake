@@ -24,7 +24,7 @@ module.exports = grammar({
 
     definition: $ => seq(
       $.definition_type,
-      $.target,
+      $.identifier,
       $.block,
     ),
 
@@ -53,22 +53,35 @@ module.exports = grammar({
 
     _conditional: $ => seq(
       '(',
-      $.condition,
+      $._expression,
       ')',
     ),
 
-    condition: $ => seq(
-      /[A-Za-z_]+/,
+    _expression: $ => choice(
+      $.identifier,
+      $.unary_expression,
+      $.binary_expression,
+    ),
+
+    unary_expression: $ => prec(3,
+      seq('!', $._expression)
+    ),
+
+    binary_expression: $ => choice(
+     prec.left(2, seq($._expression, '&&', $._expression)),
+     prec.left(1, seq($._expression, '||', $._expression)),
     ),
 
     _statement: $ => choice(
       $.use_statement,
       $.file_statement,
+      $.if_statement,
     ),
 
     use_statement: $ => seq(
       'use',
-      $.target,
+      optional($._conditional),
+      $.identifier,
     ),
 
     file_statement: $ => seq(
@@ -79,10 +92,22 @@ module.exports = grammar({
       $.file_path,
     ),
 
+    if_statement: $ => seq(
+      'if', $._expression,
+      repeat(
+        $._statement,
+      ),
+      'endif',
+    ),
+
     string: $ => seq(
       '"',
       /[^\\"\n"]+/,
       '"',
+    ),
+
+    identifier: $ => seq(
+      /[A-Za-z_\-0-9]+/,
     ),
 
     name: $ => /[A-Za-z_]+/,
@@ -90,8 +115,6 @@ module.exports = grammar({
     value: $ => /[A-Za-z_0-9\.]+/,
 
     file_path: $ => /[a-z\/]+\.[a-z]+/,
-
-    target: $ => /[a-z]+/,
 
     comment: $ => token(seq(
       '//', /.*/

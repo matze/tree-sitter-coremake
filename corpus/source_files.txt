@@ -51,7 +51,7 @@ con foo
 (source_file
   (definition
     (definition_type)
-    (target)
+    (identifier)
     (block)))
 
 
@@ -69,10 +69,10 @@ con foo
 (source_file
   (definition
     (definition_type)
-    (target)
+    (identifier)
     (block
       (use_statement
-        (target)))))
+        (identifier)))))
 
 
 
@@ -90,7 +90,7 @@ workspace foo
 (source_file
   (definition
     (definition_type)
-    (target)
+    (identifier)
     (block
       (variable
         (name)
@@ -110,6 +110,94 @@ con(ENABLE_FOO) foo
 
 (source_file
   (definition
-    (definition_type (condition))
-    (target)
+    (definition_type (identifier))
+    (identifier)
     (block)))
+
+
+
+============================================
+Conditional not
+============================================
+
+con(!ENABLE_FOO) foo
+{
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type (unary_expression
+      (identifier)))
+    (identifier)
+    (block)))
+
+
+
+============================================
+Conditional and
+============================================
+
+workspace(TARGET_FOO && !ENABLE_BAR) FooBar
+{
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type (binary_expression
+      (identifier)
+      (unary_expression
+        (identifier))))
+    (identifier)
+    (block)))
+
+
+
+============================================
+Conditional use
+============================================
+
+workspace FooBar
+{
+  use (!ENABLE_FOO) libbar
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type)
+    (identifier)
+    (block
+      (use_statement
+        (unary_expression
+          (identifier))
+        (identifier)))))
+
+
+
+============================================
+Conditional if
+============================================
+
+workspace FooBar
+{
+  if ENABLE_FOO
+    use libbar
+  endif
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type)
+    (identifier)
+    (block
+      (if_statement
+        (identifier)
+        (use_statement
+          (identifier))))))

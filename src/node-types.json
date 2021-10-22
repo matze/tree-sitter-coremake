@@ -1,5 +1,28 @@
 [
   {
+    "type": "binary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -12,6 +35,10 @@
           "named": true
         },
         {
+          "type": "if_statement",
+          "named": true
+        },
+        {
           "type": "use_statement",
           "named": true
         },
@@ -21,11 +48,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "condition",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "definition",
@@ -44,7 +66,7 @@
           "named": true
         },
         {
-          "type": "target",
+          "type": "identifier",
           "named": true
         }
       ]
@@ -59,7 +81,15 @@
       "required": false,
       "types": [
         {
-          "type": "condition",
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -81,6 +111,46 @@
     }
   },
   {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "file_statement",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "use_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "include",
     "named": true,
     "fields": {},
@@ -94,11 +164,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "name",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "source_file",
@@ -129,7 +194,7 @@
     "fields": {}
   },
   {
-    "type": "use_statement",
+    "type": "unary_expression",
     "named": true,
     "fields": {},
     "children": {
@@ -137,7 +202,38 @@
       "required": true,
       "types": [
         {
-          "type": "target",
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "use_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -163,11 +259,19 @@
     }
   },
   {
+    "type": "!",
+    "named": false
+  },
+  {
     "type": "\"",
     "named": false
   },
   {
     "type": "#include",
+    "named": false
+  },
+  {
+    "type": "&&",
     "named": false
   },
   {
@@ -191,6 +295,10 @@
     "named": false
   },
   {
+    "type": "endif",
+    "named": false
+  },
+  {
     "type": "exe",
     "named": false
   },
@@ -207,16 +315,20 @@
     "named": false
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
     "type": "lib",
     "named": false
   },
   {
-    "type": "source",
-    "named": false
+    "type": "name",
+    "named": true
   },
   {
-    "type": "target",
-    "named": true
+    "type": "source",
+    "named": false
   },
   {
     "type": "use",
@@ -232,6 +344,10 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "||",
     "named": false
   },
   {
