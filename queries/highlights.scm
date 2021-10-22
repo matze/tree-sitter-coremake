@@ -1,13 +1,29 @@
 (definition_type) @type
-(identifier) @number
+(identifier) @string
 (file_path) @string
 (comment) @comment
+(name) @attribute
 
 [
   "use"
   "source"
   "header"
-] @function
+] @function.builtin
+
+[
+  "if"
+  "endif"
+  "workspace"
+  "con"
+  "exe"
+  "lib"
+  "dll"
+] @keyword
+
+[
+  "&&"
+  "||"
+] @operator
 
 [
   "{"
