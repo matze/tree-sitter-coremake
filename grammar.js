@@ -19,7 +19,7 @@ module.exports = grammar({
 
     include: $ => seq(
       '#include',
-      $.string,
+      $.string_literal,
     ),
 
     definition: $ => seq(
@@ -58,7 +58,7 @@ module.exports = grammar({
     ),
 
     _expression: $ => choice(
-      $.identifier,
+      $.identifier_expression,
       $.unary_expression,
       $.binary_expression,
       $.parenthesized_expression,
@@ -113,7 +113,7 @@ module.exports = grammar({
       'endif',
     ),
 
-    string: $ => seq(
+    string_literal: $ => seq(
       '"',
       /[^\\"\n"]+/,
       '"',
@@ -121,6 +121,10 @@ module.exports = grammar({
 
     identifier: $ => seq(
       /[A-Za-z_\-0-9]+/,
+    ),
+
+    identifier_expression: $ => seq(
+      /[A-Z_\-0-9]+/,
     ),
 
     name: $ => /[A-Za-z_]+/,

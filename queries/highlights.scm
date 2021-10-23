@@ -1,5 +1,6 @@
 (definition_type) @type
-(string) @string
+(string_literal) @string
+(identifier_expression) @constant
 (identifier) @variable
 (file_path) @string
 (comment) @comment

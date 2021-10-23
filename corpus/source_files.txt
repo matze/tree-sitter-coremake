@@ -35,7 +35,7 @@ Include
 
 (source_file
   (include
-    (string)))
+    (string_literal)))
 
 
 ============================================
@@ -110,7 +110,7 @@ con(ENABLE_FOO) foo
 
 (source_file
   (definition
-    (definition_type (identifier))
+    (definition_type (identifier_expression))
     (identifier)
     (block)))
 
@@ -129,7 +129,7 @@ con(!ENABLE_FOO) foo
 (source_file
   (definition
     (definition_type (unary_expression
-      (identifier)))
+      (identifier_expression)))
     (identifier)
     (block)))
 
@@ -148,9 +148,9 @@ workspace(TARGET_FOO && !ENABLE_BAR) FooBar
 (source_file
   (definition
     (definition_type (binary_expression
-      (identifier)
+      (identifier_expression)
       (unary_expression
-        (identifier))))
+        (identifier_expression))))
     (identifier)
     (block)))
 
@@ -174,7 +174,7 @@ workspace FooBar
     (block
       (use_statement
         (unary_expression
-          (identifier))
+          (identifier_expression))
         (identifier)))))
 
 
@@ -198,7 +198,7 @@ workspace FooBar
     (identifier)
     (block
       (if_statement
-        (identifier)
+        (identifier_expression)
         (use_statement
           (identifier))))))
 
@@ -218,10 +218,10 @@ workspace(FOO && (BAR || QUX)) FooBar
   (definition
     (definition_type
       (binary_expression
-        (identifier)
+        (identifier_expression)
           (parenthesized_expression
             (binary_expression
-              (identifier)
-              (identifier)))))
+              (identifier_expression)
+              (identifier_expression)))))
     (identifier)
     (block)))

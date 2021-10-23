@@ -43,7 +43,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "string_literal"
         }
       ]
     },
@@ -161,7 +161,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "identifier_expression"
         },
         {
           "type": "SYMBOL",
@@ -381,7 +381,7 @@
         }
       ]
     },
-    "string": {
+    "string_literal": {
       "type": "SEQ",
       "members": [
         {
@@ -404,6 +404,15 @@
         {
           "type": "PATTERN",
           "value": "[A-Za-z_\\-0-9]+"
+        }
+      ]
+    },
+    "identifier_expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[A-Z_\\-0-9]+"
         }
       ]
     },
