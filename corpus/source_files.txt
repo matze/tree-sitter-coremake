@@ -201,3 +201,27 @@ workspace FooBar
         (identifier)
         (use_statement
           (identifier))))))
+
+
+
+============================================
+Conditional parenthesized
+============================================
+
+workspace(FOO && (BAR || QUX)) FooBar
+{
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type
+      (binary_expression
+        (identifier)
+          (parenthesized_expression
+            (binary_expression
+              (identifier)
+              (identifier)))))
+    (identifier)
+    (block)))

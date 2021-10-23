@@ -61,6 +61,7 @@ module.exports = grammar({
       $.identifier,
       $.unary_expression,
       $.binary_expression,
+      $.parenthesized_expression,
     ),
 
     unary_expression: $ => prec(3,
@@ -70,6 +71,18 @@ module.exports = grammar({
     binary_expression: $ => choice(
      prec.left(2, seq($._expression, '&&', $._expression)),
      prec.left(1, seq($._expression, '||', $._expression)),
+    ),
+
+    comma_expression: $ => seq(
+      $._expression,
+      ',',
+      choice($._expression, $.comma_expression)
+    ),
+
+    parenthesized_expression: $ => seq(
+      '(',
+      choice($._expression, $.comma_expression),
+      ')',
     ),
 
     _statement: $ => choice(
