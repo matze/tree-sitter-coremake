@@ -36,6 +36,7 @@ module.exports = grammar({
         'exe',
         'lib',
         'dll',
+        'test',
       ),
       optional($._conditional),
     ),

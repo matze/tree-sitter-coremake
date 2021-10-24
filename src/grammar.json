@@ -93,6 +93,10 @@
             {
               "type": "STRING",
               "value": "dll"
+            },
+            {
+              "type": "STRING",
+              "value": "test"
             }
           ]
         },

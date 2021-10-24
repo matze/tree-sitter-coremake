@@ -426,6 +426,10 @@
     "named": false
   },
   {
+    "type": "test",
+    "named": false
+  },
+  {
     "type": "use",
     "named": false
   },
