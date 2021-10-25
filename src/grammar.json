@@ -55,52 +55,6 @@
           "name": "definition_type"
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "block"
-        }
-      ]
-    },
-    "definition_type": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "workspace"
-            },
-            {
-              "type": "STRING",
-              "value": "group"
-            },
-            {
-              "type": "STRING",
-              "value": "con"
-            },
-            {
-              "type": "STRING",
-              "value": "exe"
-            },
-            {
-              "type": "STRING",
-              "value": "lib"
-            },
-            {
-              "type": "STRING",
-              "value": "dll"
-            },
-            {
-              "type": "STRING",
-              "value": "test"
-            }
-          ]
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
@@ -111,6 +65,47 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "definition_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "workspace"
+        },
+        {
+          "type": "STRING",
+          "value": "group"
+        },
+        {
+          "type": "STRING",
+          "value": "con"
+        },
+        {
+          "type": "STRING",
+          "value": "exe"
+        },
+        {
+          "type": "STRING",
+          "value": "lib"
+        },
+        {
+          "type": "STRING",
+          "value": "dll"
+        },
+        {
+          "type": "STRING",
+          "value": "test"
         }
       ]
     },

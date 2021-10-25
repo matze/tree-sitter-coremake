@@ -93,6 +93,10 @@
       "required": true,
       "types": [
         {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
           "type": "block",
           "named": true
         },
@@ -102,21 +106,6 @@
         },
         {
           "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "definition_type",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "binary_expression",
           "named": true
         },
         {
@@ -133,6 +122,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "definition_type",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "file_statement",

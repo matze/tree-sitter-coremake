@@ -110,7 +110,8 @@ con(ENABLE_FOO) foo
 
 (source_file
   (definition
-    (definition_type (identifier_expression))
+    (definition_type)
+    (identifier_expression)
     (identifier)
     (block)))
 
@@ -128,8 +129,9 @@ con(!ENABLE_FOO) foo
 
 (source_file
   (definition
-    (definition_type (unary_expression
-      (identifier_expression)))
+    (definition_type)
+    (unary_expression
+      (identifier_expression))
     (identifier)
     (block)))
 
@@ -147,10 +149,11 @@ workspace(TARGET_FOO && !ENABLE_BAR) FooBar
 
 (source_file
   (definition
-    (definition_type (binary_expression
+    (definition_type)
+    (binary_expression
       (identifier_expression)
       (unary_expression
-        (identifier_expression))))
+        (identifier_expression)))
     (identifier)
     (block)))
 
@@ -216,12 +219,12 @@ workspace(FOO && (BAR || QUX)) FooBar
 
 (source_file
   (definition
-    (definition_type
-      (binary_expression
-        (identifier_expression)
-          (parenthesized_expression
-            (binary_expression
-              (identifier_expression)
-              (identifier_expression)))))
+    (definition_type)
+    (binary_expression
+      (identifier_expression)
+        (parenthesized_expression
+          (binary_expression
+            (identifier_expression)
+            (identifier_expression))))
     (identifier)
     (block)))

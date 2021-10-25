@@ -24,21 +24,19 @@ module.exports = grammar({
 
     definition: $ => seq(
       $.definition_type,
+      optional($._conditional),
       $.identifier,
       $.block,
     ),
 
-    definition_type: $ => seq(
-      choice(
-        'workspace',
-        'group',
-        'con',
-        'exe',
-        'lib',
-        'dll',
-        'test',
-      ),
-      optional($._conditional),
+    definition_type: $ => choice(
+      'workspace',
+      'group',
+      'con',
+      'exe',
+      'lib',
+      'dll',
+      'test',
     ),
 
     block: $ => seq(
