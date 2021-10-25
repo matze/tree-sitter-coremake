@@ -132,7 +132,7 @@ module.exports = grammar({
 
     value: $ => /[A-Za-z_0-9\.]+/,
 
-    file_path: $ => /[a-z\/]+\.[a-z]+/,
+    file_path: $ => /[A-Za-z\/_-]+\.[a-z]+/,
 
     comment: $ => token(seq(
       '//', /.*/

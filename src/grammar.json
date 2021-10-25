@@ -430,7 +430,7 @@
     },
     "file_path": {
       "type": "PATTERN",
-      "value": "[a-z\\/]+\\.[a-z]+"
+      "value": "[A-Za-z\\/_-]+\\.[a-z]+"
     },
     "comment": {
       "type": "TOKEN",
