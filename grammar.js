@@ -101,6 +101,7 @@ module.exports = grammar({
         'source',
         'header'
       ),
+      optional($._conditional),
       $.file_path,
     ),
 

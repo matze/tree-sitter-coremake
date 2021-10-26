@@ -228,3 +228,26 @@ workspace(FOO && (BAR || QUX)) FooBar
             (identifier_expression))))
     (identifier)
     (block)))
+
+
+
+============================================
+Conditional file
+============================================
+
+workspace FooBar
+{
+  header(ENABLE_FOO) include/foo.h
+}
+
+----
+
+(source_file
+  (definition
+    (definition_type)
+    (identifier)
+    (block
+      (file_statement
+        (identifier_expression)
+        (file_path)))))
+
