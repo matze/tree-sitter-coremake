@@ -91,7 +91,10 @@ module.exports = grammar({
     ),
 
     use_statement: $ => seq(
-      'use',
+      choice(
+        'use',
+        'dep',
+      ),
       optional($._conditional),
       $.identifier,
     ),
@@ -99,7 +102,8 @@ module.exports = grammar({
     file_statement: $ => seq(
       choice(
         'source',
-        'header'
+        'header',
+        'include',
       ),
       optional($._conditional),
       $.file_path,

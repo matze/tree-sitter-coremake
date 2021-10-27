@@ -396,6 +396,10 @@
     "named": false
   },
   {
+    "type": "dep",
+    "named": false
+  },
+  {
     "type": "dll",
     "named": false
   },
@@ -421,6 +425,10 @@
   },
   {
     "type": "if",
+    "named": false
+  },
+  {
+    "type": "include",
     "named": false
   },
   {

@@ -8,8 +8,10 @@
 
 [
   "use"
+  "dep"
   "source"
   "header"
+  "include"
 ] @function.builtin
 
 [
