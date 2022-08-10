@@ -131,7 +131,7 @@ module.exports = grammar({
       /[A-Z_\-0-9]+/,
     ),
 
-    name: $ => /[A-Za-z_]+/,
+    name: $ => /[A-Za-z_][A-Za-z_0-9]+/,
 
     value: $ => /[A-Za-z_0-9\.]+/,
 

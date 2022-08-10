@@ -15,10 +15,14 @@ Variables
 ============================================
 
 foo bar.1.2.3
+with_underscore_17 1
 
 ----
 
 (source_file
+  (variable
+    (name)
+    (value))
   (variable
     (name)
     (value)))

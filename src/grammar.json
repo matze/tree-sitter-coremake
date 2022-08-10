@@ -442,7 +442,7 @@
     },
     "name": {
       "type": "PATTERN",
-      "value": "[A-Za-z_]+"
+      "value": "[A-Za-z_][A-Za-z_0-9]+"
     },
     "value": {
       "type": "PATTERN",
